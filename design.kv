@@ -1,0 +1,124 @@
+#:import chex kivy.utils.get_color_from_hex
+#:import Window kivy.core.window.Window
+
+
+MainWindow:
+	md_bg_color: chex("#D0E8F0")
+	
+	add_card_button : add_card_button
+	
+	CustomToolBar:
+		size_hint : None , None
+		pos : 0, root.height - self.height
+		size : root.width , root.height * 0.095
+
+	
+	CollectablesDrawer:
+		size_hint : None , None
+		pos : 0, 0
+		size : root.width , root.height * 0.82
+	
+	
+	MDFloatingActionButton:
+		id : add_card_button
+		size_hint : None , None
+		type : "standard"
+		icon : "card-account-details-outline"
+		theme_icon_color : "Custom"
+		icon_color : chex("#FFFFFF")
+		md_bg_color : chex("#226F8E")
+		icon_size : min(root.size) * 0.11
+		pos : ( root.width - self.width - (self.width * 0.3) ,  root.height * 0.04)
+		
+		on_release:
+			root.card_opener.open()
+		
+	MDFloatingActionButton:
+		size_hint : None , None
+		type : "standard"
+		icon : "alert-circle-outline"
+		theme_icon_color : "Custom"
+		icon_color : chex("#FFFFFF")
+		md_bg_color : chex("#226F8E")
+		icon_size : min(root.size) * 0.11
+		pos : ( root.width - add_card_button.width - self.width - (self.width * 0.6) ,  root.height * 0.04)
+		
+
+<CardOpenerButton>:
+	background_color : chex("#101315")
+	color : "white"
+	text : "1"
+	size_hint : 1 , 1
+	
+<CardOpener>:
+	background_color : 0,0,0,0
+	overlay_color : 0,0,0,0
+	
+	button_list : button_list
+	
+	FloatLayout:
+		
+		MDBoxLayout:
+			size_hint : None , None
+			size : root.width * 0.8 , root.height * 0.58
+			pos : (root.width - self.width) / 2 , ((root.height - self.height) / 2) - ( root.height * 0.03 )
+			md_bg_color : chex("#D0E8F0")
+			orientation : "vertical"
+			padding : (dp(18) , dp(18))
+			spacing : dp(10)
+			
+			Label:
+				canvas.before:
+					Color:
+						rgba : chex("#FFFFFF")
+					RoundedRectangle:
+						pos : self.pos
+						size : self.size
+						radius : ( min(Window.size) * 0.05, )
+				size_hint : 1 , 0.15
+				color : "black"
+				text : "083619"
+				
+			
+			Label:
+				size_hint : 1 , 0.1
+				color : "black"
+				text : "Number you selected does not exist"
+				
+			MDGridLayout:
+				id : button_list
+				size_hint : 1 , 0.7
+				cols : 3
+				rows : 3
+				spacing : dp(10)
+			
+			MDFillRoundFlatButton:
+				size_hint : 0.5 , 0.1
+				text : "O P E N"
+				pos_hint : { "center_x" : 0.5 }
+				md_bg_color : chex("#226F8E")
+				
+
+
+
+<CollectablesDrawer>:
+	canvas.before:
+		Color:
+			rgba : chex("#FFFFFF")
+		RoundedRectangle:
+			pos : self.pos
+			size : self.size
+			radius : ( min(Window.size) * 0.15 , min(Window.size) * 0.15 , 0 , 0)
+
+
+<CustomToolBar@Label>:
+	canvas.before:
+		Color:
+			rgba : chex("#101315")
+		RoundedRectangle:
+			pos: self.pos
+			size : self.size
+			radius : ( 0 , 0 ,  min(Window.size) * 0.05 , min(Window.size) * 0.05 )
+	
+	text : "COLLECTABLES"
+	font_size : min(Window.size) * 0.05
