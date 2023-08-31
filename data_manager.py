@@ -91,6 +91,13 @@ class AppManager :
     def getNumberOfRarity(self) -> list[tuple[str, int], ...] :
         return [(rarity, len(self.collections[rarity])) for rarity in self.collections]
 
+    def getTotalValue(self) -> int:
+        total = 0
+        for rarity in self.collections:
+            for card in self.collections[rarity]:
+                total += int(card[3])
+        return total
+
     def getHighCard(self , password : str) -> tp.Union[None , tuple , bool]:
         if password != self.high_password:
             return None # its mean incorrect password
@@ -133,5 +140,6 @@ app.loadCollections()
 app.loadUserInformation()
 app.loadCollectables()
 
+print(app.getTotalValue())
 print(app.getTotalNumberOfCards())
 print(app.getHighCard("1234567890"))
