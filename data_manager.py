@@ -135,11 +135,3 @@ class AppManager :
         return new_card # its mean you get a new card
 
 
-app = AppManager()
-app.loadCollections()
-app.loadUserInformation()
-app.loadCollectables()
-
-print(app.getTotalValue())
-print(app.getTotalNumberOfCards())
-print(app.getHighCard("1234567890"))
