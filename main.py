@@ -12,7 +12,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.image import Image
 from kivy.lang.builder import Builder
 from kivy.core.text import LabelBase
-from kivy.properties import ObjectProperty, StringProperty, BooleanProperty
+from kivy.properties import ObjectProperty, StringProperty, BooleanProperty , NumericProperty , ListProperty
 from kivy.clock import Clock
 from kivy.animation import Animation
 from kivy.core.window import Window
@@ -33,8 +33,19 @@ COLORS = {
 
 
 class InformationBoard(ModalView):
-	pass
-
+	user_id : str = StringProperty("627262836")
+	cards : int = NumericProperty(0)
+	values : int = NumericProperty(0)
+	rarity_list : list = ListProperty([0,0,0,0,0,0,0,0])
+	
+	def on_pre_open(self , *args):
+		self.user_id = self.attach_to.app_data.user_info["user_name"]
+		self.cards = self.attach_to.app_data.getTotalNumberOfCards()
+		self.values = self.attach_to.app_data.getTotalValue()
+		for i , value in enumerate(self.attach_to.app_data.getNumberOfRarity()):
+			self.rarity_list[i] = value[1]
+		
+		
 class CardOpenerButton(Button):
 	command : callable = ObjectProperty()
 	
@@ -110,7 +121,6 @@ class CardAnimation(ModalView):
 		
 		
 	def on_open(self , *args):
-		
 		self.anim += Animation( md_bg_color = COLORS.get(self.card.rarity) , t="out_quart", size = (Window.size[0] * 0.8 , Window.size[1] * 0.8) , duration = 1 	)
 		self.anim.bind(on_complete = self.card.stopTheAnimation )
 		self.anim.start(self.card)
@@ -128,11 +138,12 @@ class MainWindow(MDFloatLayout):
 		self.card_opener = CardOpener()
 		self.card_opener.attach_to = self
 		self.information_board = InformationBoard()
+		self.information_board.attach_to = self
 		self.card_anim = CardAnimation()
 		self.app_data = AppManager()
 	
-	def on_kv_post(self , *arhs):
-		Clock.schedule_once(self.card_anim.open , 1)
+	#def on_kv_post(self , *arhs):
+#		Clock.schedule_once(self.card_anim.open , 1)
 
 class CollectablesApp(MDApp):
 	
@@ -148,5 +159,6 @@ class CollectablesApp(MDApp):
 LabelBase.register( name = "poppins_black" ,fn_regular="fonts/Poppins-Black.otf")
 LabelBase.register( name = "poppins_bold" ,fn_regular="fonts/Poppins-Bold.otf")
 LabelBase.register( name = "poppins_italic" ,fn_regular="fonts/Poppins-Italic.otf")
+LabelBase.register( name = "poppins_reg" ,fn_regular="fonts/Poppins-Regular.otf")
 CollectablesApp().run()
 

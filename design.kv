@@ -95,9 +95,52 @@ MainWindow:
 				MDGridLayout:
 					cols : 1
 					adaptive_height : True
+					spacing : dp(2)
+					
+					InformationLabel:
+						text : "    OWNER INFORMATION"
+						font_name : "poppins_bold"
+						font_size : min(Window.size) * 0.04
+					
+					InformationLabel:
+						text : "       USER ID : " + root.user_id
+						
+					InformationLabel:
+						text : f"       CARDS : " + str(root.cards)
+					
+					InformationLabel:
+						text : f"       VALUES : " + str(root.values)
+						
+					InformationLabel:
+						text : "       RARITY ; "
+						
+					InformationLabel:
+						text : "               SS : " + str(root.rarity_list[0]) + "    A+ : "+ str(root.rarity_list[3]) +"    B : "+ str(root.rarity_list[6]) 
+					
+					InformationLabel:
+						text : "               S+ : "+ str(root.rarity_list[1]) +"    A   : "+ str(root.rarity_list[4]) +"    C : "+ str(root.rarity_list[7]) 
+						
+					InformationLabel:
+						text : "               S   : "+ str(root.rarity_list[2]) +"    B+ : "+ str(root.rarity_list[5]) 
+					
+					Widget:
+						#SPACER
+						size_hint : 1, None
+						height : min(Window.size) * 0.1
+					
+					InformationLabel:
+						text : "    APP INFORMATION"
+						font_name : "poppins_bold"
+						font_size : min(Window.size) * 0.04
 					
 					
 
+<InformationLabel@MDLabel>:
+	size_hint: 1 , None
+	height : self.texture_size[1]
+	font_name : "poppins_reg"
+	font_size : min(Window.size) * 0.035
+					
 
 <CardAnimation>:
 	overlay_color : 0,0,0,0.2
