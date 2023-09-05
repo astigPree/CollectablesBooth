@@ -7,6 +7,7 @@ MainWindow:
 	
 	tool_bar : tool_bar
 	add_card_button : add_card_button
+	drawer : drawer
 	
 	CustomToolBar:
 		id : tool_bar
@@ -19,17 +20,20 @@ MainWindow:
 		size_hint : None , None
 		pos : 0, 0
 		size : root.width , root.height * 0.82
-		padding : ( 0 , 50 , 0 , 0)
 		
-		MDGridLayout:
-			cols : 2
-			adaptive_height : True
-			padding : ( 50, 100 , 50 , 300)
-			spacing : 30
+		Widget:
+			size_hint : 1, 0.05
+		
+		ScrollView:
+			size_hint : 1, 0.95
 			
-			Card:
-			Card:
-			
+			MDGridLayout:
+				id : drawer
+				cols : 2
+				adaptive_height : True
+				padding : ( 50, 100 , 50 , 300)
+				spacing : 30
+				
 	
 	
 	MDFloatingActionButton:
@@ -155,9 +159,6 @@ MainWindow:
 			pos_hint : { "center_x" : 0.5 , "center_y" : 0.5}
 			size_hint :None , None
 			
-		
-		
-		
 
 <CardOpenerButton>:
 	background_color : chex("#101315")
@@ -223,6 +224,9 @@ MainWindow:
 				font_name : "poppins_bold"
 				font_size : min(self.size) * 0.45
 				
+				on_release:
+					root.getNewCard()
+				
 
 <Card>:
 	size_hint : 1, None
@@ -231,6 +235,7 @@ MainWindow:
 	md_bg_color : chex("#226F8E")
 	radius : ( min(Window.size) * 0.03 , )
 	padding : dp(2)
+	opacity : 0 
 	
 	card_image : card_image
 	
@@ -265,7 +270,7 @@ MainWindow:
 		
 
 
-<CollectablesDrawer>:
+<CollectablesDrawer@BoxLayout>:
 	canvas.before:
 		Color:
 			rgba : chex("#FFFFFF")
@@ -273,7 +278,7 @@ MainWindow:
 			pos : self.pos
 			size : self.size
 			radius : ( min(Window.size) * 0.15 , min(Window.size) * 0.15 , 0 , 0)
-
+	orientation : "vertical"
 
 <CustomToolBar@Label>:
 	canvas.before:

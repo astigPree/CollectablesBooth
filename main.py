@@ -18,7 +18,7 @@ from kivy.animation import Animation
 from kivy.core.window import Window
 from kivy.utils import get_color_from_hex as chex
 
-from data_manager import AppManager
+from data_manager import AppManager , LIST_OF_RARITY
 
 COLORS = {
 	"SS" : chex("#85200C"),
@@ -38,11 +38,13 @@ class InformationBoard(ModalView):
 	values : int = NumericProperty(0)
 	rarity_list : list = ListProperty([0,0,0,0,0,0,0,0])
 	
+	holder : object = ObjectProperty(None)
+	
 	def on_pre_open(self , *args):
-		self.user_id = self.attach_to.app_data.user_info["user_name"]
-		self.cards = self.attach_to.app_data.getTotalNumberOfCards()
-		self.values = self.attach_to.app_data.getTotalValue()
-		for i , value in enumerate(self.attach_to.app_data.getNumberOfRarity()):
+		self.user_id = self.holder.app_data.user_info["user_name"]
+		self.cards = self.holder.app_data.getTotalNumberOfCards()
+		self.values = self.holder.app_data.getTotalValue()
+		for i , value in enumerate(self.holder.app_data.getNumberOfRarity()):
 			self.rarity_list[i] = value[1]
 		
 		
@@ -55,7 +57,45 @@ class CardOpenerButton(Button):
 class CardOpener(ModalView):
 	button_list : MDGridLayout = ObjectProperty()
 	password : str = StringProperty("")
-	warning : str = StringProperty("Number you selected does not exist")
+	warning : str = StringProperty("")
+	
+	holder : object = ObjectProperty(None)
+	
+	def checkNewCard(self , card : object , tier : str):
+		if isinstance(card , bool):
+			if tier == "low":
+				self.warning = "You already get all card in LOW TIER!"
+			elif tier == "mid" :
+				self.warning = "You already get all card in MIDDLE TIER!"
+			else:
+				self.warning = "You already get all card in HIGH TIER!"
+		else:
+			self.holder.saveCardTransaction(card)
+			self.holder.card_anim.setValueOfCard(card)
+			self.dismiss()
+			self.holder.card_anim.open()
+	
+	def getNewCard(self ):
+		# Get a card for low tier
+		card = self.holder.app_data.getLowCard(self.password)
+		if card:
+			self.checkNewCard(card , "low")
+			return
+		
+		# Get a card for mid tier
+		card = self.holder.app_data.getMidCard(self.password)
+		if card:
+			self.checkNewCard(card , "mid")
+			return
+		
+		# Get a card for high tier
+		card = self.holder.app_data.getHighCard(self.password)
+		if card:
+			self.checkNewCard(card , "high")
+			return
+			
+		self.warning = "You Input A Wrong Password!"
+		
 	
 	def buttonCommand(self , text):
 		if len(self.password) < 10:
@@ -63,8 +103,12 @@ class CardOpener(ModalView):
 	
 	def on_pre_dismiss(self, *args):
 		self.password = ""
+		self.warning = ""
 	
 	def on_pre_open(self , *args):
+		if not self.holder.app_data.collectables:
+			self.holder.app_data.loadCollectables()
+			
 		if not self.button_list.children:
 			for num in range(1, 10):
 				button = CardOpenerButton()
@@ -114,8 +158,16 @@ class CardAnimation(ModalView):
 		
 		for animate in self.animate_list:
 			self.anim += animate
+		
+	def setValueOfCard(self , card : tuple):
+		self.card.rarity = card[0]
+		self.card.card_image.source = card[1]
+		self.card.quote = card[2]
+		self.card.value = card[3]
 	
 	def on_pre_open(self , *args):
+		if not self.self.card.opacity:
+			self.card.opacity = 1
 		self.card.size = Window.size[0] * 0.2 , Window.size[1] * 0.2
 		self.card.startAnimating()
 		
@@ -125,32 +177,57 @@ class CardAnimation(ModalView):
 		self.anim.bind(on_complete = self.card.stopTheAnimation )
 		self.anim.start(self.card)
 	
-	
-class CollectablesDrawer(ScrollView):
-	
-	def on_scroll_move(self , *args):
-		pass
+
 
 class MainWindow(MDFloatLayout):
+	
+	drawer : MDGridLayout = ObjectProperty()
 	
 	def __init__(self , **kwargs):
 		super(MainWindow, self).__init__(**kwargs)
 		self.card_opener = CardOpener()
-		self.card_opener.attach_to = self
+		self.card_opener.holder = self
 		self.information_board = InformationBoard()
-		self.information_board.attach_to = self
+		self.information_board.holder = self
 		self.card_anim = CardAnimation()
 		self.app_data = AppManager()
 	
-	#def on_kv_post(self , *arhs):
-#		Clock.schedule_once(self.card_anim.open , 1)
-
+	def saveCardTransaction(self ,  card : tuple):
+		self.app_data.addCardToCollections(rarity=card[0] , card=card)
+		self.app_data.saveCollections()
+	
+	def addDisplayNewCard(self , card : tuple):
+		widget = Card()
+		widget.rarity , widget.card_image.source, widget.quote , widget.value = card
+		
+		# if the drawer empty
+		if not self.drawer.children:
+			self.drawer.add_widget(widget)
+		
+		collections = self.app_data.getNumberOfRarity()
+		pos = 0
+		for card in collections:
+			
+		
+		
+	def displayAllCollections(self , *args):
+		animate = Animation(opacity = 1 , duration = 0.3)
+		for rarity in LIST_OF_RARITY:
+			for card in self.app_data.collections[rarity]:
+				widget = Card()
+				widget.md_bg_color = COLORS[rarity]
+				widget.rarity , widget.card_image.source, widget.quote , widget.value = card
+				self.drawer.add_widget(widget)
+				animate.start(widget)
+		
+	
 class CollectablesApp(MDApp):
 	
 	def on_start(self):
 		self.root.app_data.loadUserInformation()
 		self.root.app_data.loadCollections()
-	
+		Clock.schedule_once(self.root.displayAllCollections , 1)
+		
 	def build(self):
 		return Builder.load_file("design.kv")
 

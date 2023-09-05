@@ -45,15 +45,17 @@ COLLECTABLES_FILE = "collectables.json"
 USER_FILE = "user_information.json"
 PICTURE_FOLDER = "pictures"
 
+LIST_OF_RARITY = ("SS" , "S+" , "S" , "A+" , "A" , "B+" , "B" , "C") # Highest to Lowest
+
 
 class AppManager :
     collectables: tp.Dict = None
     collections: tp.Dict = None
     user_info : tp.Dict = None
 
-    high_password = "1234567890"
-    mid_password = "1234567890"
-    low_password = "1234567890"
+    high_password = "45678"
+    mid_password = "6789"
+    low_password = "12345"
 
     def loadUserInformation(self):
         if not os.path.exists(USER_FILE):
@@ -133,5 +135,13 @@ class AppManager :
         new_card = random.choice(cards)
         self.collections[new_card[0]].append(new_card)
         return new_card # its mean you get a new card
-
-
+     
+    def addCardToCollections(self , rarity : str , card : tuple):
+    	self.collections[rarity].append(card)
+	
+	
+test = AppManager()
+test.loadCollectables()
+test.loadCollections()
+test.loadUserInformation()
+print(test.getLowCard("12345"))
