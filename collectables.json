@@ -1,5 +1,9 @@
 {
   "high" : [],
   "mid" : [],
-  "low" : []
+  "low" : [
+  	["B", "pictures/happy.png", "tang ina naman", "60"] , 
+  	[ "C" , "pictures/happy.png", "Ngeeeyot", "70"],
+  	[ "B" , "pictures/happy.png", "Wally Wally", "60"]
+  ]
 }

@@ -127,10 +127,38 @@ MainWindow:
 					InformationLabel:
 						text : "               S   : "+ str(root.rarity_list[2]) +"    B+ : "+ str(root.rarity_list[5]) 
 					
+					InformationLabel:
+						text : "NOTE: Please do not clear the data or uninstall to preserve OWNER INFORMATION"
+						color : chex("#85200C")
+						font_name : "poppins_italic"
+						font_size : min(Window.size) * 0.03			
+					
+					BoxLayout:
+						size_hint : 1 , None
+						height : min(Window.size) * 0.15
+						padding : dp(5)
+						
+						Widget :
+							size_hint : 0.25 , 1
+							
+						MDFillRoundFlatButton:
+							size_hint : 0.5 ,  1
+							text : "E X I T"
+							pos_hint : { "center_x" : 0.5 }
+							md_bg_color : chex("#85200C")
+							font_name : "poppins_bold"
+							font_size : min(self.size) * 0.45
+							
+							on_release:
+								app.stop()
+						
+						Widget :
+							size_hint : 0.25 , 1
+							
 					Widget:
 						#SPACER
 						size_hint : 1, None
-						height : min(Window.size) * 0.1
+						height : min(Window.size) * 0.05
 					
 					InformationLabel:
 						text : "    APP INFORMATION"
@@ -239,13 +267,22 @@ MainWindow:
 	
 	card_image : card_image
 	
-	MDLabel:
+	BoxLayout:
 		size_hint : 1 , 0.12
-		text : "   VALUE : " + root.value
-		font_name : "poppins_bold"
-		font_size : min(self.size) * 0.4
-		color : "white"
-		opacity : 0 if root.isAnimating else 1
+		
+		MDLabel:
+			text : "   VALUE : " + root.value
+			font_name : "poppins_bold"
+			font_size : min(self.size) * 0.3
+			color : "white"
+			opacity : 0 if root.isAnimating else 1
+		
+		Label:
+			text : "N E W" if root.isNew else ""
+			font_name : "poppins_black"
+			font_size : min(self.size) * 0.3
+			color : "yellow"
+			opacity : 0 if root.isAnimating else 1
 	
 	Image:
 		id : card_image

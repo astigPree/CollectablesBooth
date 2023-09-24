@@ -2,13 +2,11 @@ __version__ = "1.0"
 
 from kivymd.app import MDApp
 from kivymd.uix.floatlayout import MDFloatLayout
-from kivymd.uix.button import MDRoundFlatButton
 from kivymd.uix.gridlayout import MDGridLayout
 from kivymd.uix.boxlayout import MDBoxLayout
 
 from kivy.uix.modalview import ModalView
 from kivy.uix.button import Button
-from kivy.uix.scrollview import ScrollView
 from kivy.uix.image import Image
 from kivy.lang.builder import Builder
 from kivy.core.text import LabelBase
@@ -122,6 +120,7 @@ class Card(MDBoxLayout):
 	quote : str = StringProperty("' mapapatay man kita pira pira, nano kay na haglok ka? '")
 	rarity : str = StringProperty("SS")
 	card_image : Image = ObjectProperty()
+	isNew : bool = BooleanProperty(False)
 	
 	isAnimating : bool = BooleanProperty(False)
 	animatingColor = StringProperty("black")
@@ -139,7 +138,10 @@ class Card(MDBoxLayout):
 		
 class CardAnimation(ModalView):
 	card : Card = ObjectProperty()
+	card_info : tuple = ObjectProperty()
 	anim = Animation()
+	holder : object = ObjectProperty()
+	
 	
 	def __init__(self , **kwargs):
 		super(CardAnimation, self).__init__(**kwargs)
@@ -164,20 +166,21 @@ class CardAnimation(ModalView):
 		self.card.card_image.source = card[1]
 		self.card.quote = card[2]
 		self.card.value = card[3]
+		self.card_info = card
 	
 	def on_pre_open(self , *args):
-		if not self.self.card.opacity:
+		if not self.card.opacity:
 			self.card.opacity = 1
 		self.card.size = Window.size[0] * 0.2 , Window.size[1] * 0.2
 		self.card.startAnimating()
-		
 		
 	def on_open(self , *args):
 		self.anim += Animation( md_bg_color = COLORS.get(self.card.rarity) , t="out_quart", size = (Window.size[0] * 0.8 , Window.size[1] * 0.8) , duration = 1 	)
 		self.anim.bind(on_complete = self.card.stopTheAnimation )
 		self.anim.start(self.card)
 	
-
+	def on_pre_dismiss(self , *args):
+		self.holder.addDisplayNewCard( self.card_info)
 
 class MainWindow(MDFloatLayout):
 	
@@ -190,25 +193,19 @@ class MainWindow(MDFloatLayout):
 		self.information_board = InformationBoard()
 		self.information_board.holder = self
 		self.card_anim = CardAnimation()
+		self.card_anim.holder = self
 		self.app_data = AppManager()
-	
+		
 	def saveCardTransaction(self ,  card : tuple):
-		self.app_data.addCardToCollections(rarity=card[0] , card=card)
 		self.app_data.saveCollections()
-	
+		
 	def addDisplayNewCard(self , card : tuple):
 		widget = Card()
+		widget.isNew = True
 		widget.rarity , widget.card_image.source, widget.quote , widget.value = card
-		
-		# if the drawer empty
-		if not self.drawer.children:
-			self.drawer.add_widget(widget)
-		
-		collections = self.app_data.getNumberOfRarity()
-		pos = 0
-		for card in collections:
-			
-		
+		widget.md_bg_color = COLORS[widget.rarity]
+		self.drawer.add_widget(widget , index=len(self.drawer.children))
+		Animation(opacity = 1 , duration = 0.5).start(widget)
 		
 	def displayAllCollections(self , *args):
 		animate = Animation(opacity = 1 , duration = 0.3)
@@ -224,6 +221,8 @@ class MainWindow(MDFloatLayout):
 class CollectablesApp(MDApp):
 	
 	def on_start(self):
+		Window.bind( on_keyboard = self.HandleBackButton)
+		
 		self.root.app_data.loadUserInformation()
 		self.root.app_data.loadCollections()
 		Clock.schedule_once(self.root.displayAllCollections , 1)
@@ -231,7 +230,10 @@ class CollectablesApp(MDApp):
 	def build(self):
 		return Builder.load_file("design.kv")
 
-
+	def HandleBackButton(self , window , key , *args):
+		if key == 27:
+			self.root.information_board.open()
+			return True
 
 LabelBase.register( name = "poppins_black" ,fn_regular="fonts/Poppins-Black.otf")
 LabelBase.register( name = "poppins_bold" ,fn_regular="fonts/Poppins-Bold.otf")

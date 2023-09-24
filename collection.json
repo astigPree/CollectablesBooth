@@ -1,19 +1,23 @@
 {
-  "SS" : [],
-  "S+" : [
-  	["S+", "" , "Ako na pogi", "50" ],
-  	["S+", "" , "Ako na pogi", "50" ]
-  	],
-  "S" : [],
-  "A+" : [],
-  "A" : [],
-  "B+" : [
-  	["B+", "" , "Ako na pogi", "50" ],
-  	["B+", "" , "Ako na pogi", "50" ]
-  	],
-  "B" : [],
-  "C" : [
-  	["C", "" , "Ako na pogi", "50" ],
-  	["C", "" , "Ako na pogi", "50" ]
-  	]
+    "SS": [],
+    "S+": [],
+    "S": [],
+    "A+": [],
+    "A": [],
+    "B+": [],
+    "B": [
+        [
+            "B",
+            "pictures/happy.png",
+            "Wally Wally",
+            "60"
+        ],
+        [
+            "B",
+            "pictures/happy.png",
+            "tang ina naman",
+            "60"
+        ]
+    ],
+    "C": []
 }

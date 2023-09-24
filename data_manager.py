@@ -56,7 +56,8 @@ class AppManager :
     high_password = "45678"
     mid_password = "6789"
     low_password = "12345"
-
+    
+    
     def loadUserInformation(self):
         if not os.path.exists(USER_FILE):
             user_info = { "user_name" : str(uuid4())[:10] }
@@ -68,7 +69,7 @@ class AppManager :
 
     def saveUserInformation(self):
         with open(USER_FILE , "w") as jf:
-            json.dump(self.user_info , jf)
+            json.dump(self.user_info , jf, indent=4)
 
     def loadCollections(self) :
         with open(COLLECTION_FILE, 'r') as jf :
@@ -76,7 +77,7 @@ class AppManager :
 
     def saveCollections(self):
         with open(COLLECTION_FILE , 'w') as jf:
-            json.dump(self.collections , jf)
+            json.dump(self.collections , jf , indent=4)
 
     def loadCollectables(self) :
         if self.collectables is not None: return
@@ -140,8 +141,3 @@ class AppManager :
     	self.collections[rarity].append(card)
 	
 	
-test = AppManager()
-test.loadCollectables()
-test.loadCollections()
-test.loadUserInformation()
-print(test.getLowCard("12345"))
