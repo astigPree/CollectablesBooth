@@ -221,6 +221,7 @@ class MainWindow(MDFloatLayout):
 class CollectablesApp(MDApp):
 	
 	def on_start(self):
+		
 		Window.bind( on_keyboard = self.HandleBackButton)
 		
 		self.root.app_data.loadUserInformation()
