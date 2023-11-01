@@ -165,6 +165,27 @@ MainWindow:
 						font_name : "poppins_bold"
 						font_size : min(Window.size) * 0.04
 					
+					InformationLabel:
+						text : "        DEVELOPER"
+						font_name : "poppins_bold"
+						font_size : min(Window.size) * 0.03
+					Image:
+						source : "pictures/guanz.png"
+						size_hint : 1 , None
+						keep_data : True
+						keep_ratio : False
+						allow_stretch : True
+						height : min(Window.size) * 0.65
+					InformationLabel:
+						text : "[font=poppins_bold]Name : [/font] Ericson Mark A. Guanzon"
+						font_size : min(Window.size) * 0.03
+					InformationLabel:
+						text : "[font=poppins_bold]COURSE : [/font] Bachelor of Science in Computer Science"
+						font_size : min(Window.size) * 0.03
+					InformationLabel:
+						text : "[font=poppins_bold]YEAR : [/font] 4TH Year"
+						font_size : min(Window.size) * 0.03
+					
 					
 
 <InformationLabel@MDLabel>:
@@ -172,6 +193,7 @@ MainWindow:
 	height : self.texture_size[1]
 	font_name : "poppins_reg"
 	font_size : min(Window.size) * 0.035
+	markup : True
 					
 
 <CardAnimation>:
