@@ -182,6 +182,28 @@ class CardAnimation(ModalView):
 	def on_pre_dismiss(self , *args):
 		self.holder.addDisplayNewCard( self.card_info)
 
+
+class LoadingPage(ModalView):
+	
+	image : str = StringProperty("pictures/guanz.png")
+	image_pos : float = NumericProperty(0.0)
+	loading_pos : float = NumericProperty(0.0)
+	
+	add_movement = 0
+	
+	def moveLoading(self):
+		self.loading_pos += self.add_movement
+		if self.image_pos >= 0.8:
+			self.image_pos = 0.8
+		else:
+			self.image_pos += self.add_movement
+	
+	def moveToFinished(self):
+		self.loading_pos = 1
+		self.image_pos = 0.8
+		self.dismiss()
+
+
 class MainWindow(MDFloatLayout):
 	
 	drawer : MDGridLayout = ObjectProperty()
@@ -194,7 +216,9 @@ class MainWindow(MDFloatLayout):
 		self.information_board.holder = self
 		self.card_anim = CardAnimation()
 		self.card_anim.holder = self
-		self.app_data = AppManager()
+		self.app_data = AppManager()		
+		self.loading_page = LoadingPage()
+		
 		
 	def saveCardTransaction(self ,  card : tuple):
 		self.app_data.saveCollections()
@@ -208,14 +232,22 @@ class MainWindow(MDFloatLayout):
 		Animation(opacity = 1 , duration = 0.5).start(widget)
 		
 	def displayAllCollections(self , *args):
+		self.loading_page.add_movement = 1 / self.app_data.getTheNumberOfCollectables()
+		self.loading_page.open()
 		animate = Animation(opacity = 1 , duration = 0.3)
+		cards = []
 		for rarity in LIST_OF_RARITY:
 			for card in self.app_data.collections[rarity]:
 				widget = Card()
 				widget.md_bg_color = COLORS[rarity]
 				widget.rarity , widget.card_image.source, widget.quote , widget.value = card
 				self.drawer.add_widget(widget)
-				animate.start(widget)
+				cards.append(widget)
+		
+		self.loading_page.moveToFinished()		
+		for card in cards:
+			animate.start(card)
+		
 		
 	
 class CollectablesApp(MDApp):
@@ -226,6 +258,7 @@ class CollectablesApp(MDApp):
 		
 		self.root.app_data.loadUserInformation()
 		self.root.app_data.loadCollections()
+		self.root.app_data.loadCollectables()
 		Clock.schedule_once(self.root.displayAllCollections , 1)
 		
 	def build(self):

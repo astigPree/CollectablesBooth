@@ -139,5 +139,9 @@ class AppManager :
      
     def addCardToCollections(self , rarity : str , card : tuple):
     	self.collections[rarity].append(card)
-	
-	
+    
+    def getTheNumberOfCollectables(self):
+    	total = 0
+    	for key in self.collectables:
+    		total += len(self.collectables[key])
+    	return total
