@@ -187,19 +187,23 @@ class LoadingPage(ModalView):
 	
 	image : str = StringProperty("pictures/guanz.png")
 	image_pos : float = NumericProperty(0.0)
-	loading_pos : float = NumericProperty(0.0)
+	loading_box : MDBoxLayout = ObjectProperty(None)
 	
 	add_movement = 0
 	
 	def moveLoading(self):
-		self.loading_pos += self.add_movement
-		if self.image_pos >= 0.8:
+		self.loading_box.size_hint_x += self.add_movement
+		if self.image_pos + self.add_movement >= 0.8:
 			self.image_pos = 0.8
 		else:
 			self.image_pos += self.add_movement
+		
+		print(f"Move Image : {self.image_pos}")
+		print(f"Move Loading : {self.loading_box.size_hint_x}")
+		
 	
 	def moveToFinished(self):
-		self.loading_pos = 1
+		self.loading_box.size_hint_x = 1
 		self.image_pos = 0.8
 		self.dismiss()
 
@@ -243,11 +247,11 @@ class MainWindow(MDFloatLayout):
 				widget.rarity , widget.card_image.source, widget.quote , widget.value = card
 				self.drawer.add_widget(widget)
 				cards.append(widget)
+				self.loading_page.moveLoading()
 		
 		self.loading_page.moveToFinished()		
 		for card in cards:
 			animate.start(card)
-		
 		
 	
 class CollectablesApp(MDApp):

@@ -68,6 +68,8 @@ MainWindow:
 	background_color : 0,0,0,0
 	overlay_color : 0,0,0,0.5
 	
+	loading_box : loading_box
+	
 	BoxLayout:
 		orientation : "vertical"
 		size_hint : 0.8 , 0.1
@@ -90,7 +92,8 @@ MainWindow:
 			padding : dp(1)
 			
 			MDBoxLayout:
-				size_hint : root.loading_pos , 1
+				id : loading_box
+				size_hint : 0 , 1
 				md_bg_color : chex("#101315") 
 				radius : (24,)
 

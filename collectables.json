@@ -1,6 +1,14 @@
 {
-  "high" : [],
-  "mid" : [],
+  "high" : [
+  	["S", "pictures/happy.png", "tang ina naman", "60"] , 
+  	[ "S+" , "pictures/happy.png", "Ngeeeyot", "70"],
+  	[ "SS" , "pictures/happy.png", "Wally Wally", "60"]
+  ],
+  "mid" : [
+  	["A+", "pictures/happy.png", "tang ina naman", "60"] , 
+  	[ "A" , "pictures/happy.png", "Ngeeeyot", "70"],
+  	[ "B+" , "pictures/happy.png", "Wally Wally", "60"]
+  ],
   "low" : [
   	["B", "pictures/happy.png", "tang ina naman", "60"] , 
   	[ "C" , "pictures/happy.png", "Ngeeeyot", "70"],
