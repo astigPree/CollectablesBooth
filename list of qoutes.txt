@@ -1,0 +1,36 @@
+based on these qoutes create a cartonny and funny image and the character must be girl
+
+
+Funny;
+"Ang pagsasama'y parang adobo, mas masarap kapag matagal na."/
+"Bakit ayaw mag-joke ng pinya? Kasi feeling niya, corny."/
+"Sa exam, ang sagot ko ay parang ex ko, mali."/
+"Ang love life parang Wi-Fi. Mahirap makakuha kung palagi kang naka-connect sa past."/
+"Bakit ang mga ulap parang tao? Kasi minsan, biglang nagbabago ang mood."/
+"Hindi lahat ng gising, aware. Yung iba, kagigising lang, agad tulog ulit."/
+"Yung crush mo parang cellphone ko, out of reach." /
+"Ang nagmamaganda, parang traffic, nakakairita pero hirap iwasan." /
+"Ang puso parang elevator, minsan sa maling floor bumabalik."/
+
+Sad;
+"Sa ulan ng luha, ako'y natutong sumayaw mag-isa."/
+"Ang pait ng kahapon, baon sa mga mata."/
+"Naisip mo ba na minsan, 'di ko alam kung sino ako?"/
+"Ang hirap maging strong kapag ikaw ang laging taga-empower sa iba."/
+"Hindi lahat ng malungkot, umaatungal."/
+"Yung pakiramdam na mas malungkot ka kapag walang dahilan."/
+"Nakakapagod maging malungkot, pero mas nakakapagod magpretend na masaya."/
+"May mga bagay na kahit anong gawin mo, hindi mo na mababalik."/
+"Sa pagsiklab ng kandila, nararamdaman ang init ng paglisan."/
+
+Romance;
+
+"Sa pag-ibig, minsan mukhang puzzle, hindi mo alam kung saan ka lulugar."/
+"Kahit love life ko, mas magulo pa sa traffic."/
+"Yung feeling na mas matagal pa 'yung kaba kaysa sa landi."/
+"Yung tadhana parang elevator, palagi akong stuck sa ground floor."/
+"Pag-ibig ko sa kanya, parang queue sa government office, ang tagal."/
+"Love is blind, pero bakit ang crush mo nearsighted?"/
+"Paminsan-minsan, love life ko parang Netflix series, on hold."/
+"Sa love life, 'di lahat ng gustong manood, invited sa screening."/
+Ang crush, parang password, mahirap ma-hack.
