@@ -1,17 +1,39 @@
 {
   "high" : [
-  	["S", "pictures/happy.png", "tang ina naman", "60"] , 
-  	[ "S+" , "pictures/happy.png", "Ngeeeyot", "70"],
-  	[ "SS" , "pictures/happy.png", "Wally Wally", "60"]
+  	[ "S", "pictures/heart.png", "Nano an qoutes mo", "70"] ,
+  	[ "S", "pictures/josh.png", "Nano an qoutes mo", "80"] ,
+  	[ "S+" , "pictures/miah.png", "Miah nano an qoutes mo", "90"],
+  	[ "SS" , "pictures/guanz.png", "Pag maiisip mo na mamatay ka sa huli, doon mag-babago ang lahat.", "100"]
   ],
   "mid" : [
-  	["A+", "pictures/happy.png", "tang ina naman", "60"] , 
-  	[ "A" , "pictures/happy.png", "Ngeeeyot", "70"],
-  	[ "B+" , "pictures/happy.png", "Wally Wally", "60"]
+  	[ "A+", "pictures/mga_bagay.png", "\"May mga bagay na kahit anong gawin mo, hindi mo na mababalik.\"", "68"] ,
+  	[ "A+", "pictures/traffic.png", "\"Kahit love life ko, mas magulo pa sa traffic.\"", "60"] ,
+  	[ "A+", "pictures/nagmamaganda.png", "\"Ang nagmamaganda, parang traffic, nakakairita pero hirap iwasan.\"", "58"] ,
+  	[ "A" , "pictures/luha_sa_ulan.png", "\"Sa ulan ng luha, ako'y natutong sumayaw mag-isa.\"", "55"],
+  	[ "A" , "pictures/mukhang_puzzle.png", "\"Sa pag-ibig, minsan mukhang puzzle, hindi mo alam kung saan ka lulugar.\"", "50"],
+	[ "A" , "pictures/puso_elevetor.png", "\"Ang puso parang elevator, minsan sa maling floor bumabalik.\"", "47"],
+  	[ "B+" , "pictures/hirap_strong.png", "\"Ang hirap maging strong kapag ikaw ang laging taga-empower sa iba.\"", "44"],
+  	[ "B+" , "pictures/umaatungal.png", "\"Hindi lahat ng malungkot, umaatungal.\"", "40"],
+  	[ "B+" , "pictures/parang_cp.png", "\"Yung crush mo parang cellphone ko, out of reach.\"", "37"]
   ],
   "low" : [
-  	["B", "pictures/happy.png", "tang ina naman", "60"] , 
-  	[ "C" , "pictures/happy.png", "Ngeeeyot", "70"],
-  	[ "B" , "pictures/happy.png", "Wally Wally", "60"]
+  	[ "B", "pictures/adobo.png", "\"Ang pagsasama'y parang adobo, mas masarap kapag matagal na.\"", "35"],
+  	[ "B" , "pictures/yung_pakiramdam.png", "\"Yung pakiramdam na mas malungkot ka kapag walang dahilan.\"", "34"],
+  	[ "B" , "pictures/pagod_lungkot.png", "\"Nakakapagod maging malungkot, pero mas nakakapagod magpretend na masaya.\"", "29"],
+  	[ "B" , "pictures/kandila_siklab.png", "\"Sa pagsiklab ng kandila, nararamdaman ang init ng paglisan.\"", "27"],
+  	[ "B" , "pictures/ex_exam.png", "\"Sa exam, ang sagot ko ay parang ex ko, mali.", "32"],
+  	[ "B" , "pictures/manood.png", "\"Sa love life, 'di lahat ng gustong manood, invited sa screening.\"", "30"],
+	[ "C" , "pictures/password.png", "\"Ang crush, parang password, mahirap ma-hack.\"", "25"],
+	[ "C" , "pictures/netflix.png", "\"Paminsan-minsan, love life ko parang Netflix series, on hold.\"", "13"],
+	[ "C" , "pictures/nearsigthed.png", "\"Love is blind, pero bakit ang crush mo nearsighted?\"", "15"],
+	[ "C" , "pictures/government.png", "\"Pag-ibig ko sa kanya, parang queue sa government office, ang tagal.\"", "16"],
+	[ "C" , "pictures/elevator.png", "\"Yung tadhana parang elevator, palagi akong stuck sa ground floor.\"", "10"],
+	[ "C" , "pictures/matagal_pa.png", "\"Yung feeling na mas matagal pa 'yung kaba kaysa sa landi.\"", "18"],
+	[ "C" , "pictures/naiisip.png", "\"Naisip mo ba na minsan, 'di ko alam kung sino ako?\"", "20"],
+	[ "C" , "pictures/pait.jpg", "\"Ang pait ng kahapon, baon sa mga mata.\"", "11"],
+	[ "C" , "pictures/gising.png", "\"Hindi lahat ng gising, aware. Yung iba, kagigising lang, agad tulog ulit.\"", "17"],
+	[ "C" , "pictures/ulap.png", "\"Bakit ang mga ulap parang tao? Kasi minsan, biglang nagbabago ang mood.\"", "23"],
+	[ "C" , "pictures/pinya.png", "\"Bakit ayaw mag-joke ng pinya? Kasi feeling niya, corny.\"", "12"],
+	[ "C" , "pictures/wifi.png", "\"Ang love life parang Wi-Fi. Mahirap makakuha kung palagi kang naka-connect sa past.\"", "16"]
   ]
 }

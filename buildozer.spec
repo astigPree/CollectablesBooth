@@ -23,7 +23,7 @@ source.include_exts = py,png,jpg,kv,atlas,ogg
 source.include_patterns = data/*.png, sound/*.ogg
 
 # (list) Source files to exclude (let empty to not exclude anything)
-#source.exclude_exts = spec
+#source.exclude_exts = spec,txt
 
 # (list) List of directory to exclude (let empty to not exclude anything)
 #source.exclude_dirs = tests, bin

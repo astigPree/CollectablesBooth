@@ -1,60 +1,12 @@
 {
-    "SS": [
-        [
-            "SS",
-            "pictures/happy.png",
-            "Wally Wally",
-            "60"
-        ]
-    ],
-    "S+": [
-    ],
-    "S": [
-        [
-            "S",
-            "pictures/happy.png",
-            "tang ina naman",
-            "60"
-        ]
-    ],
-    "A+": [
-        [
-            "A+",
-            "pictures/happy.png",
-            "tang ina naman",
-            "60"
-        ]
-    ],
-    "A": [
-        [
-            "A",
-            "pictures/happy.png",
-            "Ngeeeyot",
-            "70"
-        ]
-    ],
-    "B+": [
-        [
-            "B+",
-            "pictures/happy.png",
-            "Wally Wally",
-            "60"
-        ]
-    ],
+    "SS": [],
+    "S+": [],
+    "S": [],
+    "A+": [],
+    "A": [],
+    "B+": [],
     "B": [
-        [
-            "B",
-            "pictures/happy.png",
-            "Wally Wally",
-            "60"
-        ]
     ],
     "C": [
-        [
-            "C",
-            "pictures/happy.png",
-            "Ngeeeyot",
-            "70"
-        ]
     ]
 }

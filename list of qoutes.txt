@@ -2,35 +2,35 @@ based on these qoutes create a cartonny and funny image and the character must b
 
 
 Funny;
-"Ang pagsasama'y parang adobo, mas masarap kapag matagal na."/
-"Bakit ayaw mag-joke ng pinya? Kasi feeling niya, corny."/
-"Sa exam, ang sagot ko ay parang ex ko, mali."/
-"Ang love life parang Wi-Fi. Mahirap makakuha kung palagi kang naka-connect sa past."/
-"Bakit ang mga ulap parang tao? Kasi minsan, biglang nagbabago ang mood."/
-"Hindi lahat ng gising, aware. Yung iba, kagigising lang, agad tulog ulit."/
-"Yung crush mo parang cellphone ko, out of reach." /
-"Ang nagmamaganda, parang traffic, nakakairita pero hirap iwasan." /
-"Ang puso parang elevator, minsan sa maling floor bumabalik."/
+"Ang pagsasama'y parang adobo, mas masarap kapag matagal na."/ B
+"Bakit ayaw mag-joke ng pinya? Kasi feeling niya, corny."/ C
+"Sa exam, ang sagot ko ay parang ex ko, mali."/ B
+"Ang love life parang Wi-Fi. Mahirap makakuha kung palagi kang naka-connect sa past."/ C
+"Bakit ang mga ulap parang tao? Kasi minsan, biglang nagbabago ang mood."/ C
+"Hindi lahat ng gising, aware. Yung iba, kagigising lang, agad tulog ulit."/ C
+"Yung crush mo parang cellphone ko, out of reach." / B+
+"Ang nagmamaganda, parang traffic, nakakairita pero hirap iwasan." / A+
+"Ang puso parang elevator, minsan sa maling floor bumabalik."/ A
 
 Sad;
-"Sa ulan ng luha, ako'y natutong sumayaw mag-isa."/
-"Ang pait ng kahapon, baon sa mga mata."/
-"Naisip mo ba na minsan, 'di ko alam kung sino ako?"/
-"Ang hirap maging strong kapag ikaw ang laging taga-empower sa iba."/
-"Hindi lahat ng malungkot, umaatungal."/
-"Yung pakiramdam na mas malungkot ka kapag walang dahilan."/
-"Nakakapagod maging malungkot, pero mas nakakapagod magpretend na masaya."/
-"May mga bagay na kahit anong gawin mo, hindi mo na mababalik."/
-"Sa pagsiklab ng kandila, nararamdaman ang init ng paglisan."/
+"Sa ulan ng luha, ako'y natutong sumayaw mag-isa."/ A
+"Ang pait ng kahapon, baon sa mga mata."/ C
+"Naisip mo ba na minsan, 'di ko alam kung sino ako?"/ C
+"Ang hirap maging strong kapag ikaw ang laging taga-empower sa iba."/ B+
+"Hindi lahat ng malungkot, umaatungal."/ B+
+"Yung pakiramdam na mas malungkot ka kapag walang dahilan."/ B
+"Nakakapagod maging malungkot, pero mas nakakapagod magpretend na masaya."/ B
+"May mga bagay na kahit anong gawin mo, hindi mo na mababalik."/ A+
+"Sa pagsiklab ng kandila, nararamdaman ang init ng paglisan."/ B
 
 Romance;
 
-"Sa pag-ibig, minsan mukhang puzzle, hindi mo alam kung saan ka lulugar."/
-"Kahit love life ko, mas magulo pa sa traffic."/
-"Yung feeling na mas matagal pa 'yung kaba kaysa sa landi."/
-"Yung tadhana parang elevator, palagi akong stuck sa ground floor."/
-"Pag-ibig ko sa kanya, parang queue sa government office, ang tagal."/
-"Love is blind, pero bakit ang crush mo nearsighted?"/
-"Paminsan-minsan, love life ko parang Netflix series, on hold."/
-"Sa love life, 'di lahat ng gustong manood, invited sa screening."/
-Ang crush, parang password, mahirap ma-hack.
+"Sa pag-ibig, minsan mukhang puzzle, hindi mo alam kung saan ka lulugar."/ A
+"Kahit love life ko, mas magulo pa sa traffic."/ A+
+"Yung feeling na mas matagal pa 'yung kaba kaysa sa landi."/ C
+"Yung tadhana parang elevator, palagi akong stuck sa ground floor."/ C
+"Pag-ibig ko sa kanya, parang queue sa government office, ang tagal."/ C
+"Love is blind, pero bakit ang crush mo nearsighted?"/ C
+"Paminsan-minsan, love life ko parang Netflix series, on hold."/ C
+"Sa love life, 'di lahat ng gustong manood, invited sa screening."/ B
+Ang crush, parang password, mahirap ma-hack. C
