@@ -53,9 +53,10 @@ class AppManager :
     collections: tp.Dict = None
     user_info : tp.Dict = None
 
-    high_password = "5720487839"
-    mid_password = "6739402048"
-    low_password = "3475920478"
+    # The Password Must Be 9 numbers
+    high_password = "5"
+    mid_password = "6"
+    low_password = "3"
     
     
     def loadUserInformation(self):
